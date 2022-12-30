@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>裁剪</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    <div class="box">
+        <!-- <div id="title">请按照指示画出路线</div> -->
+        <div id="scissors"></div>
+
+        <script>
+
+            var scissors = document.getElementById("scissors")
+
+
+            // 拖拽笔-----------------------------------开始
+            let offsetX = 0
+            let offsetY = 0
+            // offsetX offsetY 点击位置相对于在元素里的位置
+            function setPostion(x, y) {
+                scissors.style.left = x + 'px'
+                scissors.style.top = y + 'px'
+            }
+            function getPosition() {
+                let position = window.getComputedStyle(scissors, null)
+                let left = position.left
+                let top = position.top
+                left = parseInt(left.slice(0, left.length - 2))
+                top = parseInt(top.slice(0, top.length - 2))
+                return {
+                    top,
+                    left
+                }
+            }
+            function touchStart(e) {
+                // console.log(e)
+                if (e.target == scissors) {
+                    // console.log('yes')
+                    offsetX = e.touches[0].pageX - getPosition().left
+                    offsetY = e.touches[0].pageY - getPosition().top
+                    console.log(offsetX, offsetY)
+                }
+            }
+            function touchMove(e) {
+                let x = e.touches[0].clientX
+                let y = e.touches[0].clientY
+                // console.log(x, y)
+                setPostion(x - offsetX, y - offsetY)
+                if (y <= 0 || y >= window.innerHeight || x <= 0 || x >= window.innerWidth) {
+                    console.log('超出边界')
+                }
+
+                setTimeout(pen_moving, 3000)
+                // setTimeout(img_change, 3000)
+
+
+            }
+            function pen_moving() {
+                window.location.href = '4-3.html';
+
+                // box5.style.zIndex = '0';
+
+            }
+            function img_change() {
+                box6.classList.add('img_change');
+            }
+            document.addEventListener('touchstart', touchStart)
+            document.addEventListener('touchmove', touchMove)
+            // 拖拽笔-----------------------------------结束
+
+
+
+        </script>
+
+
+    </div>
+</body>
+<style>
+    .box {
+        width: 100%;
+        height: 100vh;
+        background-image: url('img/4-2/过程2裁剪.jpg');
+        /* background-repeat: no-repeat;
+        background-size: cover; */
+        background-position: center center;
+        /* 背景图不平铺 */
+        background-repeat: no-repeat;
+        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+        background-attachment: fixed;
+        /* 让背景图基于容器大小伸缩 */
+        background-size: cover;
+        position: relative;
+  
+
+    }
+
+    #title {
+        /* width: 200px;
+        height: 50px; */
+        line-height: 50px;
+        position: absolute;
+        left: 39%;
+        bottom: 11%;
+        font-size: 1.1em;
+        font-weight: bold;
+        /* background: #fff; */
+        color: #000;
+    }
+
+    #scissors {
+        width: 3em;
+        height: 4em;
+        position: absolute;
+        left: 53%;
+        bottom: 36%;
+        background-image: url(img/4-2/scissors_close.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        animation: 1s close_to_open infinite;
+
+    }
+
+
+    @keyframes close_to_open {
+
+        to {
+            background-image: url(img/scissors_open.png);
+        }
+    }
+
+    @keyframes img_change {
+
+        5% {
+            background-image: url(img/2-3.jpg);
+        }
+
+        10% {
+            background-image: url(img/2-4.jpg);
+        }
+
+        15% {
+            background-image: url(img/2-5.jpg);
+        }
+
+        20% {
+            background-image: url(img/2-6.jpg);
+        }
+
+        25% {
+            background-image: url(img/2-7.jpg);
+        }
+
+        30% {
+            background-image: url(img/2-8.jpg);
+        }
+
+        35% {
+            background-image: url(img/2-9.jpg);
+        }
+
+        40% {
+            background-image: url(img/2-10.jpg);
+        }
+
+        45% {
+            background-image: url(img/2-11.jpg);
+        }
+
+        50% {
+            background-image: url(img/2-12.jpg);
+        }
+
+        50% {
+            background-image: url(img/2-12.jpg);
+        }
+
+        55% {
+            background-image: url(img/2-13.jpg);
+        }
+
+        60% {
+            background-image: url(img/2-14.jpg);
+        }
+
+        65% {
+            background-image: url(img/2-15.jpg);
+        }
+
+        70% {
+            background-image: url(img/2-16.jpg);
+        }
+
+        75% {
+            background-image: url(img/2-17.jpg);
+        }
+
+        80% {
+            background-image: url(img/2-18.jpg);
+        }
+
+        85% {
+            background-image: url(img/2-19.jpg);
+        }
+
+        90% {
+            background-image: url(img/2-20.jpg);
+        }
+
+        95% {
+            background-image: url(img/2-21.jpg);
+        }
+
+        to {
+            background-image: url(img/2-22.jpg);
+        }
+    }
+</style>
+
+</html>

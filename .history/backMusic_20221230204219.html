@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css">
+
+</head>
+
+<body>
+    <!-- <iframe id="m_iframe" src="music.html" style="display:none;"></iframe> -->
+    <audio id="music" autoplay="autoplay" loop="true" controls="controls" preload="auto" hidden="true"
+        style="display:none;">
+        <source src="mp3/tian.mp3" type="audio/mp3">
+    </audio>
+
+    <img id="music_icon" src="img/m.png" alt="">
+
+    <iframe width="100%" height="100%" id="win" name="win"  onload="Javascript:SetWinHeight(this)" frameborder="0" scrolling="no" src="2.html"></iframe>
+
+    <script>
+        //父页面监听：获取点击的a标签，来切换iframe的src，进行更换显示页面
+        window.addEventListener("message", function (event) {
+            var data = event.data;
+            console.log(data);
+            document.getElementById("win").src = data.page;
+            //此时data.page就是子页面里changePage函数里传来的page数值
+        })
+
+        //iframe自适应高度
+        function SetWinHeight(obj) {
+            var win = obj;
+            if (document.getElementById) {
+                if (win && !window.opera) {
+                    if (win.contentDocument && win.contentDocument.body.offsetHeight)
+                        win.height = win.contentDocument.body.offsetHeight;
+                    else if (win.Document && win.Document.body.scrollHeight)
+                        win.height = win.Document.body.scrollHeight;
+                }
+            }
+        }
+
+        // var m_iframe = document.getElementById("m_iframe")
+        var music_icon = document.getElementById("music_icon")
+
+        var music = document.querySelector("#music")
+        music_icon.addEventListener("click", function () {
+
+                 if (music !== null) {
+                //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+                //alert(audio.paused);
+                if (music.paused) {
+                    music_icon.style.animationPlayState = 'running'  // animationPlayState 为空时继续播放
+                    music.play(); //audio.play();// 这个就是播放
+                    // box0.addClass("active")
+                } else {
+                    music_icon.style.animationPlayState = 'paused' // animationPlayState 为paused时暂停
+                    music.pause(); // 这个就是暂停
+                    // $("#btn").removeClass("active")
+                }
+            }
+
+        })
+
+
+    </script>
+
+
+</body>
+<style>
+    #music_icon {
+        position: absolute;
+        top: 0.5em;
+        right: 0.5em;
+        z-index: 999;
+        width: 2em;
+        height: 2em;
+        /* display: none; */
+        /* -moz-animation: spin 3s infinite linear;
+        -o-animation: spin 3s infinite linear;
+        -webkit-animation: spin 3s infinite linear;
+        animation: spin 3s infinite linear; */
+        animation: 1s spin infinite;
+        animation-play-state: paused;
+
+
+    }
+
+    /* @-moz-keyframes spin {
+        0% {
+            -moz-transform: rotate(0)
+        }
+
+        100% {
+            -moz-transform: rotate(359deg)
+        }
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0)
+        }
+
+        100% {
+            -webkit-transform: rotate(359deg)
+        }
+    }
+
+    @-o-keyframes spin {
+        0% {
+            -o-transform: rotate(0)
+        }
+
+        100% {
+            -o-transform: rotate(359deg)
+        }
+    }
+
+    @-ms-keyframes spin {
+        0% {
+            -ms-transform: rotate(0)
+        }
+
+        100% {
+            -ms-transform: rotate(359deg)
+        }
+    } */
+
+    @keyframes spin {
+
+        0% {
+            transform: rotate(0)
+        }
+
+        100% {
+            transform: rotate(359deg)
+        }
+    }
+</style>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    <div class="box">
+
+        <img id="enter" src="img/3/hand.png" alt="">
+        <script>
+            setTimeout(show, 2000)
+            var enter = document.getElementById("enter")
+            function show() {
+                enter.style.display = "block"
+            }
+            enter.addEventListener("click", function () {
+                window.location.href = '3-1.html';
+
+            })
+
+            function changePage(page) {
+                window.parent.postMessage({
+                    page: page
+                }, "*");
+            }
+
+        </script>
+
+
+    </div>
+</body>
+<style>
+    .box {
+        width: 100%;
+        height: 100vh;
+        background-image: url('img/3/登陆界面.jpg');
+        /* background-repeat: no-repeat;
+        background-size: cover; */
+        background-position: center center;
+        /* 背景图不平铺 */
+        background-repeat: no-repeat;
+        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+        background-attachment: fixed;
+        /* 让背景图基于容器大小伸缩 */
+        background-size: 100% 100%;
+
+        /* background-size: cover; */
+        position: relative;
+        animation: 2s enter;
+        animation-fill-mode: forwards;
+
+    }
+
+    #enter {
+        width: 3em;
+        height: 3em;
+        position: absolute;
+        bottom: 13em;
+        right: 11em;
+        animation: 1s blink-smooth infinite;
+        display: none;
+    }
+
+
+
+    @keyframes enter {
+
+        0% {
+            background-image: url('img/3/登陆界面.jpg');
+
+        }
+
+
+        100% {
+            background-image: url('img/3/进入界面.jpg');
+
+
+
+        }
+    }
+
+    @keyframes blink-smooth {
+        to {
+            opacity: 0;
+        }
+    }
+</style>
+
+</html>

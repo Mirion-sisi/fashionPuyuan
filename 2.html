@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+
+    <div class="box">
+       
+        <img id="cloud" src="img/2/云飘.png" alt="">
+        <img id="person" src="img/2/人物微动.png" alt="">
+        <img id="fire" src="img/2/喷发.png" alt="">
+        <img id="triangle" src="img/2/小三角.png" alt="">
+        <script>
+            
+
+            var triangle = document.getElementById("triangle")
+            triangle.addEventListener("click", function () {
+                window.location.href = '3.html';
+                // music.play();
+
+            })
+
+            function changePage(page) {
+                window.parent.postMessage({
+                    page: page
+                }, "*");
+            }
+
+
+
+        </script>
+
+
+
+
+    </div>
+</body>
+<style>
+    .box {
+        width: 100%;
+        height: 100vh;
+        background-image: url('img/2/无.jpg');
+        /* background-repeat: no-repeat;
+        background-size: cover; */
+        background-position: center center;
+        /* 背景图不平铺 */
+        background-repeat: no-repeat;
+        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+        background-attachment: fixed;
+        /* 让背景图基于容器大小伸缩 */
+        background-size: 100% 100%;
+
+        /* background-size: cover; */
+        position: relative;
+    }
+
+    #cloud {
+        width: 5em;
+        height: 3em;
+        position: absolute;
+        top: 13em;
+        right: 2em;
+        animation: 2s cloud infinite;
+    }
+
+    #person {
+        width: 10em;
+        height: 15em;
+        position: absolute;
+        top: 13em;
+        right: 2em;
+        animation: 2s person infinite;
+    }
+
+    #fire {
+        width: 3em;
+        height: 3em;
+        position: absolute;
+        bottom: 8em;
+        left: 3em;
+        animation: 2s fire infinite;
+    }
+
+    #triangle {
+        width: 1em;
+        height: 1em;
+        position: absolute;
+        bottom: 7em;
+        left: 12em;
+        animation: 1s down_to_up infinite;
+        /* animation: 2s fire infinite; */
+    }
+
+    @keyframes cloud {
+
+        0% {
+            right: 2em;
+        }
+
+        50% {
+            right: 5em;
+
+        }
+
+        100% {
+            right: 2em;
+        }
+    }
+
+    @keyframes person {
+
+        0% {
+            right: 2em;
+        }
+
+        25% {
+            width: 10.5em;
+            height: 15.5em;
+            right: 3em;
+
+        }
+
+        50% {
+            width: 11em;
+            height: 16em;
+            right: 4em;
+            top: 13.5em;
+
+
+        }
+
+        75% {
+            width: 12em;
+            height: 17em;
+            right: 4.5em;
+            top: 13.8em;
+
+
+        }
+
+        100% {
+            right: 5.5em;
+            top: 14em;
+        }
+    }
+
+
+    @keyframes fire {
+
+        0% {
+            width: 2em;
+            height: 2em;
+        }
+
+        50% {
+            width: 3em;
+            height: 3em;
+
+        }
+
+        100% {
+            width: 0em;
+            height: 0em;
+        }
+    }
+
+    @keyframes down_to_up {
+
+        to {
+            transform: translateY(10px);
+        }
+    }
+</style>
+
+</html>

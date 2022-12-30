@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <audio id="music" autoplay="autoplay" loop="true" controls="controls" preload="auto" hidden="true">
+        <source src="mp3/tian.mp3" type="audio/mp3" >
+    </audio>
+    <!--添加音频播放，设置为自动播放,并隐藏播放控件的显示-->
+    <!-- <audio id="bgAudio" controls="controls" autoplay="autoplay" controls="controls" hidden="hidden">
+        <source src="mp3/tian.mp3" type="audio/mp3">
+        <source src="mp3/tian.mp3" type="audio/ogg">
+        <embed height="50px" width="100px" src="mp3/tian.mp3">
+    </audio> -->
+    <script type="text/javascript">
+        myVid = document.getElementById("music");
+        myVid.volume = 0.2;
+       
+    </script>
+
+</body>
+
+</html>
